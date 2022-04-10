@@ -1,0 +1,14 @@
+stages:
+  - build
+  - test
+
+docker_build:
+  stage: build
+  script:
+    - docker build -t mkdocs-1.0 .
+
+docker_test:
+  stage: test
+  script:
+    - docker run -v ${PWD}/docs:/mkdocs/my_project -it mkdocs-1.0 produce
+    - if [[ -e "${PWD}/docs/result.tar.gz" ]]; then echo "Successfully created tar.gz"; else exit 1; fi

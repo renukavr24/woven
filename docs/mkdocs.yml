@@ -1,0 +1,4 @@
+site_name: Woven Planet Holdings
+nav:
+  - Sample Content: index.md
+dev_addr: 0.0.0.0:8000
